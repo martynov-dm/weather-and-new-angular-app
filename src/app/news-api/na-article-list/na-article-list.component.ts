@@ -9,6 +9,7 @@ import {Article, NewsApiService} from "../news-api.service";
 export class NaArticleListComponent implements OnInit {
   articles!: Article[]
   isLoading!: boolean
+  numberOfPages!: number
 
   constructor(private newsApiService: NewsApiService) {
     this.newsApiService.pagesOutput.subscribe((articles) => {
@@ -16,6 +17,9 @@ export class NaArticleListComponent implements OnInit {
     })
     this.newsApiService.isLoading.subscribe((loadingState) => {
       this.isLoading = loadingState
+    })
+    this.newsApiService.numberOfPages.subscribe((numberOfPages) => {
+      this.numberOfPages = numberOfPages
     })
     this.newsApiService.getPage(1)
   }

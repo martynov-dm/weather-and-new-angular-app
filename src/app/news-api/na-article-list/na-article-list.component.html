@@ -1,4 +1,4 @@
-<h3>Russia news</h3>
+<h3>BBC news</h3>
 <div class="list-group">
   <app-spinner *ngIf="isLoading" ></app-spinner>
   <a
@@ -7,8 +7,10 @@
     [href]="article.url"
     target="_blank"
   >
-    {{ article.title | trimOutletName: article.source.name }}
+    {{ article.title }}
   </a>
 </div>
+<ng-container *ngIf="numberOfPages">
+  <app-paginator [numberOfPages]="numberOfPages"></app-paginator>
+</ng-container>
 
-<app-paginator [numberOfPages]="5"></app-paginator>

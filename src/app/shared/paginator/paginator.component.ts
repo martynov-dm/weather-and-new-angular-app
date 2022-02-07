@@ -16,6 +16,10 @@ export class PaginatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   this.calcPageOptions()
+  }
+
+  calcPageOptions() {
     this.pageOptions = [
       this.currentPage - 2,
       this.currentPage - 1,
@@ -28,5 +32,6 @@ export class PaginatorComponent implements OnInit {
   onClick(pageNumber: number) {
     this.newsApiService.getPage(pageNumber)
     this.currentPage = pageNumber
+    this.calcPageOptions()
   }
 }
